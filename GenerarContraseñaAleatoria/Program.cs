@@ -11,32 +11,38 @@ namespace GenerarContraseñaAleatoria
     {
         static void Main(string[] args)
         {
-            Random rdn = new Random();
-            string caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890%$#@";
-            int longitud = caracteres.Length;
-            char letra;
-            int longitudContrasenia = 10;
-            string contraseniaAleatoria = string.Empty;
-            for (int i = 0; i < longitudContrasenia; i++)
-            {
-                letra = caracteres[rdn.Next(longitud)];
-                contraseniaAleatoria += letra.ToString();
-            }
-            var password = GenerarPassword(10);
-            var pass = generarClaveSHA1("Ivan");
+            var contraseniaAleatoria = pass(6);
+            var password = GenerarPassword(5);
+            var passh = generarClaveSHA1("VIRUS20");
 
             Console.Write("La contraseña generada es: " + contraseniaAleatoria);
             Console.WriteLine();
 
             Console.Write("La pass generada es: " + password);
             Console.WriteLine();
-            Console.Write("La pass generada es: " + pass);
+            Console.Write("La pass generada es: " + passh);
 
             Console.WriteLine();
             Console.ReadLine();
 
         }
+        public static string pass(int _longitud)
+        {
 
+            string contraseña = string.Empty;
+            Random rdn = new Random();
+            string caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890%$#@";
+            int longitud = caracteres.Length;
+            char letra;
+            int longitudContrasenia = _longitud;
+            string contraseniaAleatoria = string.Empty;
+            for (int i = 0; i < longitudContrasenia; i++)
+            {
+                letra = caracteres[rdn.Next(longitud)];
+                contraseña = contraseniaAleatoria += letra.ToString();
+            }
+            return contraseña;
+        }
         public static string GenerarPassword(int longitud)
         {
             string contraseña = string.Empty;
